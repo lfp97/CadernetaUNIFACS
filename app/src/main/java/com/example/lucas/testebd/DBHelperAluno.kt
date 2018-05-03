@@ -114,7 +114,7 @@ class DBHelperAluno(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
     companion object {
         // If you change the database schema, you must increment the database version.
         val DATABASE_VERSION = 1
-        val DATABASE_NAME = "FeedReader.db"
+        val DATABASE_NAME = "Caderneta.db"
 
         private val SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + DBContract.alunoEntry.TABLE_NAME + " (" +
