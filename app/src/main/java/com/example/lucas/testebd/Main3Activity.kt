@@ -17,7 +17,7 @@ class Main3Activity : AppCompatActivity() {
         DBHelperProfessor = DBHelperProfessor(this)
     }
 
-    fun addUser(v: View)
+    fun addProf(v: View)
     {
         var idProfessor = this.edittext_idProfessor.text.toString()
         var name = this.edittext_name.text.toString()
@@ -32,7 +32,7 @@ class Main3Activity : AppCompatActivity() {
         this.ll_entries.removeAllViews()
     }
 
-    fun deleteUser(v: View)
+    fun deleteProf(v: View)
     {
         var idProfessor = this.edittext_idProfessor.text.toString()
         val result = DBHelperProfessor.deleteProfessor(idProfessor)
@@ -40,7 +40,7 @@ class Main3Activity : AppCompatActivity() {
         this.ll_entries.removeAllViews()
     }
 
-    fun showAllUsers(v: View)
+    fun showAllProf(v: View)
     {
         var professores = DBHelperProfessor.readAllProfessores()
         this.ll_entries.removeAllViews()

@@ -11,6 +11,12 @@ class Main2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
     }
+
+    fun onClickLogar (view: View)
+    {
+        val intentLogar= Intent(this, Main4Activity::class.java)
+        startActivity(intentLogar)
+    }
     fun onClickAlunos (view: View)
     {
         val inte= Intent(this, MainActivity::class.java)

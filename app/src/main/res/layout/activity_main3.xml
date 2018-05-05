@@ -41,40 +41,42 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Matricula" />
+
         <EditText
             android:id="@+id/edittext_Senha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="Matricula" />
+            android:hint="Senha" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
-            android:id="@+id/button_add_user"
+            android:id="@+id/button_add_prof"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="addUser"
+            android:onClick="addProf"
             android:text="Add" />
 
         <Button
-            android:id="@+id/button_delete_user"
+            android:id="@+id/button_delete_prof"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="deleteUser"
+            android:onClick="deleteProf"
             android:text="Delete" />
 
         <Button
-            android:id="@+id/button_show_all"
+            android:id="@+id/button_show_prof"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="showAllUsers"
+            android:onClick="showAllProf"
             android:text="Show All" />
     </LinearLayout>
     <TextView
