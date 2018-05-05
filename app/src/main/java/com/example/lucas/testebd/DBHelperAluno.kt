@@ -111,6 +111,21 @@ class DBHelperAluno(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         return alunos
     }
 
+    fun readAllAlunosToListView(): Cursor
+    {
+        val db = writableDatabase
+        lateinit var cursor: Cursor
+        try
+        {
+            cursor = db.rawQuery("select NOME, MATRICULA from " + DBContract.alunoEntry.TABLE_NAME, null)
+        }
+        catch (e: SQLiteException)
+        {
+            db.execSQL(SQL_CREATE_ENTRIES)
+        }
+        return cursor
+    }
+
     companion object {
         // If you change the database schema, you must increment the database version.
         val DATABASE_VERSION = 1
