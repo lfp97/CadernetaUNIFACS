@@ -4,9 +4,7 @@ import android.database.Cursor
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import java.util.ArrayList
 
 class Main4Activity : AppCompatActivity()
@@ -14,6 +12,7 @@ class Main4Activity : AppCompatActivity()
     private lateinit var listView: ListView
     private lateinit var dataBaseHelperChamadaAlunos: DBHelperAluno
     //private lateinit var dataBaseHelperChamadaProfessores: DBHelperProfessor um pra professor, e turma
+    private lateinit var btnSalvar: Button
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -27,8 +26,13 @@ class Main4Activity : AppCompatActivity()
     private fun popularListView()
     {
         var listaAlunos = dataBaseHelperChamadaAlunos.readAllAlunos()
-        //var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaAlunos)
         var adapter= AlunoAdapter(this, listaAlunos)
         listView.adapter = adapter
+    }
+
+    fun onClickSalvar (view: View) //implementar
+    {
+        //var listaAlunosFaltantes= listView.
+        Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT)
     }
 }
