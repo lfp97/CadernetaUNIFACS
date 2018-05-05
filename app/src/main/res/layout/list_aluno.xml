@@ -13,17 +13,17 @@
         android:layout_marginBottom="6dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="6dp"
-        android:contentDescription="@string/thumbnail"
         android:scaleType="centerInside"
         tools:src="@mipmap/ic_launcher" />
 
     <RelativeLayout
-        android:id="@+id/recipe_list_text_layout"
+        android:id="@+id/aluno_list_text_layout"
         android:layout_width="289dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/aluno_list_thumbnail"
-        android:layout_toStartOf="@id/recipe_list_detail">
+        android:layout_toStartOf="@id/aluno_list_matricula"
+        tools:ignore="NotSibling">
 
         <TextView
             android:id="@+id/aluno_list_nome"
@@ -35,7 +35,7 @@
             tools:text="Nome" />
 
         <TextView
-            android:id="@+id/raluno_list_matricula"
+            android:id="@+id/aluno_list_matricula"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
