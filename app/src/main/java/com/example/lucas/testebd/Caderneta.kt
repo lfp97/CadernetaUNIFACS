@@ -9,6 +9,7 @@ class Caderneta : AppCompatActivity()
 {
     private lateinit var listView: ListView
     private lateinit var dataBaseHelperChamadaAlunos: DBHelperAluno
+    private lateinit var dataBaseHelperChamadaDadosProf: DBHelperProfessor
     //private lateinit var dataBaseHelperChamadaProfessores: DBHelperProfessor um pra professor, e turma
     private lateinit var btnSalvar: Button
 
@@ -26,11 +27,28 @@ class Caderneta : AppCompatActivity()
         var listaAlunos = dataBaseHelperChamadaAlunos.readAllAlunos()
         var adapter= AlunoAdapter(this, listaAlunos)
         listView.adapter = adapter
+        //mostrarDados()
+    }
+
+    private fun mostrarDados()
+    {
+        dataBaseHelperChamadaDadosProf= DBHelperProfessor(this)
+        var telaDados= findViewById<View>(R.id.textViewDados) as TextView
+        var listaResults= dataBaseHelperChamadaDadosProf.readProfessor("1")
+        if (listaResults.isEmpty())
+            telaDados.setText("Banco Vazio")
+        else
+        {
+            var aux= listaResults.get(0)
+            telaDados.setText("Professor: " + aux.nome)
+        }
+
     }
 
     fun onClickSalvar (view: View) //implementar
     {
         //var listaAlunosFaltantes= listView.
         Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT)
+        mostrarDados()
     }
 }

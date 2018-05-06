@@ -115,7 +115,7 @@ class DBHelperDisciplina(context: Context) : SQLiteOpenHelper(context, DATABASE_
         private val SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + DBContract.disciplinaEntry.TABLE_NAME + " (" +
                         DBContract.disciplinaEntry.COLUMN_ID + " TEXT PRIMARY KEY," +
-                        DBContract.disciplinaEntry.COLUMN_NAME + " TEXT,"
+                        DBContract.disciplinaEntry.COLUMN_NAME + " TEXT)"
 
         private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DBContract.disciplinaEntry.TABLE_NAME
     }

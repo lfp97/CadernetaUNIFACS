@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteConstraintException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 
 import java.util.ArrayList
 
@@ -128,8 +129,8 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                 "CREATE TABLE " + DBContract.professorEntry.TABLE_NAME + " (" +
                         DBContract.professorEntry.COLUMN_ID + " TEXT PRIMARY KEY," +
                         DBContract.professorEntry.COLUMN_NAME + " TEXT," +
-                        DBContract.professorEntry.COLUMN_MATRICULA + " TEXT)" +
-                        DBContract.professorEntry.COLUMN_SENHA
+                        DBContract.professorEntry.COLUMN_MATRICULA + " TEXT," +
+                        DBContract.professorEntry.COLUMN_SENHA + "TEXT)"
 
         private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DBContract.professorEntry.TABLE_NAME
     }
