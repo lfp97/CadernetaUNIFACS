@@ -38,7 +38,7 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         values.put(DBContract.professorEntry.COLUMN_ID, professor.id)
         values.put(DBContract.professorEntry.COLUMN_NAME, professor.nome)
         values.put(DBContract.professorEntry.COLUMN_MATRICULA, professor.matricula)
-        values.put(DBContract.professorEntry.COLUMN_MATRICULA, professor.matricula)
+        values.put(DBContract.professorEntry.COLUMN_SENHA, professor.senha)
 
         // Insert the new row, returning the primary key value of the new row
         val newRowId = db.insert(DBContract.professorEntry.TABLE_NAME, null, values)
@@ -72,16 +72,18 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
             return ArrayList()
         }
 
+        var id: String
         var name: String
         var matricula: String
         var senha: String
         if (cursor!!.moveToFirst()) {
             while (cursor.isAfterLast == false) {
+                id= cursor.getString(cursor.getColumnIndex(DBContract.professorEntry.COLUMN_ID))
                 name = cursor.getString(cursor.getColumnIndex(DBContract.professorEntry.COLUMN_NAME))
                 matricula = cursor.getString(cursor.getColumnIndex(DBContract.professorEntry.COLUMN_MATRICULA))
                 senha= cursor.getString(cursor.getColumnIndex(DBContract.professorEntry.COLUMN_SENHA))
 
-                professores.add(Professor(idProfessor, name, matricula, senha))
+                professores.add(Professor(id, name, matricula, senha))
                 cursor.moveToNext()
             }
         }

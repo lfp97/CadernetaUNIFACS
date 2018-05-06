@@ -19,7 +19,8 @@
         <activity android:name=".CRUDAluno" />
         <activity android:name=".CRUDProfessor" />
         <activity android:name=".Caderneta" />
-        <activity android:name=".SelecaoCRUDS"></activity>
+        <activity android:name=".SelecaoCRUDS" />
+        <activity android:name=".CRUDDisciplina"></activity>
     </application>
 
 </manifest>

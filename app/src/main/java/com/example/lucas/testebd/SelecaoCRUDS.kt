@@ -22,4 +22,9 @@ class SelecaoCRUDS : AppCompatActivity() {
         val intentAluno= Intent(this, CRUDAluno::class.java)
         startActivity(intentAluno)
     }
+    fun onClickDisciplina (view: View)
+    {
+        val intentDisc= Intent(this, CRUDDisciplina::class.java)
+        startActivity(intentDisc)
+    }
 }

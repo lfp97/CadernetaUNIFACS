@@ -25,4 +25,13 @@ object DBContract
             val COLUMN_SENHA = "SENHA"
         }
     }
+    class disciplinaEntry: BaseColumns
+    {
+        companion object
+        {
+            val TABLE_NAME = "Disciplina"
+            val COLUMN_ID = "ID"
+            val COLUMN_NAME = "NOME"
+        }
+    }
 }
