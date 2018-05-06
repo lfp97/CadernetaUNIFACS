@@ -5,26 +5,21 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class Main2Activity : AppCompatActivity() {
+class Menu : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.telaMenu)
     }
 
     fun onClickLogar (view: View)
     {
-        val intentLogar= Intent(this, Main4Activity::class.java)
+        val intentLogar= Intent(this, Caderneta::class.java)
         startActivity(intentLogar)
     }
-    fun onClickAlunos (view: View)
+    fun onClickCRUDS (view: View)
     {
-        val inte= Intent(this, MainActivity::class.java)
+        val inte= Intent(this, SelecaoCRUDS::class.java)
         startActivity(inte)
-    }
-    fun onClickProfessores (view: View)
-    {
-        val inte2= Intent(this, Main3Activity::class.java)
-        startActivity(inte2)
     }
 }

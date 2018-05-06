@@ -1,13 +1,11 @@
 package com.example.lucas.testebd
 
-import android.database.Cursor
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import java.util.ArrayList
 
-class Main4Activity : AppCompatActivity()
+class Caderneta : AppCompatActivity()
 {
     private lateinit var listView: ListView
     private lateinit var dataBaseHelperChamadaAlunos: DBHelperAluno
@@ -17,7 +15,7 @@ class Main4Activity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main4)
+        setContentView(R.layout.telaCaderneta)
         listView= findViewById<View>(R.id.listView) as ListView
         dataBaseHelperChamadaAlunos= DBHelperAluno(this)
         popularListView()
