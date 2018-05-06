@@ -26,6 +26,7 @@ class CRUDProfessor : AppCompatActivity() {
         var result = DBHelperProfessor.insertProfessor(Professor(idProfessor, name, matricula, senha))
         //clear all edittext s
         this.edittext_MatriculaProf.setText("")
+        this.edittext_SenhaProf.setText("")
         this.edittext_nameProf.setText("")
         this.edittext_idProfessor.setText("")
         this.textview_resultProf.text = "Added user : "+result
