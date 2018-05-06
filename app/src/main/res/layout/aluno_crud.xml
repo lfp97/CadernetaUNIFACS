@@ -6,10 +6,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".CRUDAluno">
 
     <TextView
-        android:id="@+id/edittext_Titulo"
+        android:id="@+id/edittext_TituloAluno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -29,14 +29,14 @@
             android:hint="ID Aluno" />
 
         <EditText
-            android:id="@+id/edittext_name"
+            android:id="@+id/edittext_nameAluno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Nome" />
 
         <EditText
-            android:id="@+id/edittext_Matricula"
+            android:id="@+id/edittext_MatriculaAluno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -72,11 +72,11 @@
             android:text="Show All" />
     </LinearLayout>
     <TextView
-        android:id="@+id/textview_result"
+        android:id="@+id/textview_resultAluno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <LinearLayout
-        android:id="@+id/ll_entries"
+        android:id="@+id/ll_entriesAluno"
         android:padding="15dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
