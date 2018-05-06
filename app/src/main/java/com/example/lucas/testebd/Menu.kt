@@ -9,7 +9,7 @@ class Menu : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.telaMenu)
+        setContentView(R.layout.tela_menu)
     }
 
     fun onClickLogar (view: View)

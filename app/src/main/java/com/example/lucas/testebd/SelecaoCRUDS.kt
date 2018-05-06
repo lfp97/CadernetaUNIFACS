@@ -9,7 +9,7 @@ class SelecaoCRUDS : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.telaSelecaoCRUDS)
+        setContentView(R.layout.tela_selecao_cruds)
     }
 
     fun onClickProfessor(view: View)

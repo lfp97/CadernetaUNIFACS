@@ -15,7 +15,7 @@ class Caderneta : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.telaCaderneta)
+        setContentView(R.layout.tela_caderneta)
         listView= findViewById<View>(R.id.listView) as ListView
         dataBaseHelperChamadaAlunos= DBHelperAluno(this)
         popularListView()

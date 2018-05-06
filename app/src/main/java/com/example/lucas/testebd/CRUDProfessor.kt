@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import kotlinx.android.synthetic.main.professorCRUD.*
+import kotlinx.android.synthetic.main.professor_crud.*
 
 class CRUDProfessor : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class CRUDProfessor : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.professorCRUD)
+        setContentView(R.layout.professor_crud)
 
         DBHelperProfessor = DBHelperProfessor(this)
     }

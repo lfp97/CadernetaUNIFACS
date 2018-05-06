@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import kotlinx.android.synthetic.main.alunoCRUD.*
+import kotlinx.android.synthetic.main.aluno_crud.*
 
 class CRUDAluno : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class CRUDAluno : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.alunoCRUD)
+        setContentView(R.layout.aluno_crud)
 
         DBHelperAluno = DBHelperAluno(this)
     }
