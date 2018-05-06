@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteConstraintException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.lucas.testebd.Professor;
 
 import java.util.ArrayList
 
@@ -44,6 +45,19 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         val newRowId = db.insert(DBContract.professorEntry.TABLE_NAME, null, values)
 
         return true
+    }
+
+    fun addProfessor(professor: Professor) {
+        val db = this.writableDatabase
+
+        val values = ContentValues()
+        values.put(COLUMN_PROFESSOR_NOME, professor.nome)
+        values.put(COLUMN_PROFESSOR_MATRICULA, professor.matricula)
+        values.put(COLUMN_PROFESSOR_SENHA, professor.senha)
+
+        // executa inserção
+        db.insert(TABLE_PROFESSOR, null, values)
+        db.close()
     }
 
     @Throws(SQLiteConstraintException::class)
@@ -117,6 +131,57 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         return professores
     }
 
+    fun checkProfessor(matricula: String): Boolean {
+
+        val columns = arrayOf(COLUMN_PROFESSOR_ID)
+        val db = this.readableDatabase
+        val selection = "$COLUMN_PROFESSOR_MATRICULA = ?"
+        val selectionArgs = arrayOf(matricula)
+
+        val cursor = db.query(TABLE_PROFESSOR, // Tabela
+                columns,
+                selection,      //columns for the WHERE clause
+                selectionArgs,  //The values for the WHERE clause
+                null,  //group the rows
+                null,   //filter by row groups
+                null)  //The sort order
+
+        val cursorCount = cursor.count
+        cursor.close()
+        db.close()
+
+        if (cursorCount > 0) {
+            return true
+        }
+
+        return false
+    }
+
+    fun checkProfessor(matricula: String, senha: String): Boolean {
+
+        val columns = arrayOf(COLUMN_PROFESSOR_ID)
+        val db = this.readableDatabase
+        val selection = "$COLUMN_PROFESSOR_MATRICULA = ? AND $COLUMN_PROFESSOR_SENHA = ?"
+        val selectionArgs = arrayOf(matricula, senha)
+
+        val cursor = db.query(TABLE_PROFESSOR,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null)
+
+        val cursorCount = cursor.count
+        cursor.close()
+        db.close()
+
+        if (cursorCount > 0)
+            return true
+
+        return false
+    }
+
     companion object {
         // If you change the database schema, you must increment the database version.
         val DATABASE_VERSION = 1
@@ -130,6 +195,15 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                         DBContract.professorEntry.COLUMN_SENHA
 
         private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DBContract.professorEntry.TABLE_NAME
+
+        // Nome da tabela de professor
+        private val TABLE_PROFESSOR = "professor"
+
+        // Campos tabela professor
+        private val COLUMN_PROFESSOR_ID = "id"
+        private val COLUMN_PROFESSOR_NOME = "nome"
+        private val COLUMN_PROFESSOR_MATRICULA = "matricula"
+        private val COLUMN_PROFESSOR_SENHA = "senha"
     }
 
 }
