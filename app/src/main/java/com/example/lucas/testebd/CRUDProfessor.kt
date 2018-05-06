@@ -12,11 +12,10 @@ class CRUDProfessor : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-<<<<<<< HEAD:app/src/main/java/com/example/lucas/testebd/Main3Activity.kt
+
         //setContentView(R.layout.activity_main)
-=======
         setContentView(R.layout.professor_crud)
->>>>>>> d69b1342e3fe6ffa04fb0370d48df433586290d1:app/src/main/java/com/example/lucas/testebd/CRUDProfessor.kt
+
 
         DBHelperProfessor = DBHelperProfessor(this)
     }
