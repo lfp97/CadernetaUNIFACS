@@ -130,7 +130,7 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                         DBContract.professorEntry.COLUMN_ID + " TEXT PRIMARY KEY," +
                         DBContract.professorEntry.COLUMN_NAME + " TEXT," +
                         DBContract.professorEntry.COLUMN_MATRICULA + " TEXT," +
-                        DBContract.professorEntry.COLUMN_SENHA + "TEXT)"
+                        DBContract.professorEntry.COLUMN_SENHA + " TEXT)"
 
         private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DBContract.professorEntry.TABLE_NAME
     }
