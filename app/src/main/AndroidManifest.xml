@@ -20,7 +20,8 @@
         <activity android:name=".CRUDProfessor" />
         <activity android:name=".Caderneta" />
         <activity android:name=".SelecaoCRUDS" />
-        <activity android:name=".CRUDDisciplina"></activity>
+        <activity android:name=".CRUDDisciplina" />
+        <activity android:name=".Login"></activity>
     </application>
 
 </manifest>

@@ -6,22 +6,13 @@ import android.view.View
 import android.widget.TextView
 import kotlinx.android.synthetic.main.aluno_crud.*
 
-<<<<<<< HEAD:app/src/main/java/com/example/lucas/testebd/MainActivity.kt
-class  MainActivity : AppCompatActivity() {
-=======
-class CRUDAluno : AppCompatActivity() {
->>>>>>> d69b1342e3fe6ffa04fb0370d48df433586290d1:app/src/main/java/com/example/lucas/testebd/CRUDAluno.kt
-
+class CRUDAluno : AppCompatActivity()
+{
     lateinit var DBHelperAluno : DBHelperAluno
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
-<<<<<<< HEAD:app/src/main/java/com/example/lucas/testebd/MainActivity.kt
-        //setContentView(R.layout.activity_main)
-=======
         setContentView(R.layout.aluno_crud)
->>>>>>> d69b1342e3fe6ffa04fb0370d48df433586290d1:app/src/main/java/com/example/lucas/testebd/CRUDAluno.kt
-
         DBHelperAluno = DBHelperAluno(this)
     }
 

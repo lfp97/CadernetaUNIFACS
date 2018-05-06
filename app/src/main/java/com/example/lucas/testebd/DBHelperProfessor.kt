@@ -75,12 +75,12 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         return true
     }
 
-    fun readProfessor(idProfessor: String): ArrayList<Professor> {
+    fun readProfessor(matProfessor: String): ArrayList<Professor> {
         val professores = ArrayList<Professor>()
         val db = writableDatabase
         var cursor: Cursor? = null
         try {
-            cursor = db.rawQuery("select * from " + DBContract.professorEntry.TABLE_NAME + " WHERE " + DBContract.professorEntry.COLUMN_ID + "='" + idProfessor + "'", null)
+            cursor = db.rawQuery("select * from " + DBContract.professorEntry.TABLE_NAME + " WHERE " + DBContract.professorEntry.COLUMN_MATRICULA + "='" + matProfessor + "'", null)
         } catch (e: SQLiteException) {
             // if table not yet present, create it
             db.execSQL(SQL_CREATE_ENTRIES)
