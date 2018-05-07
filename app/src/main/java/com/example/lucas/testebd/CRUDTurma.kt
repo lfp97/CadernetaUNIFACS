@@ -49,7 +49,7 @@ class CRUDTurma : AppCompatActivity() {
         turmas.forEach {
             var tv_turma = TextView(this)
             tv_turma.textSize = 30F
-            tv_turma.text = it.id + " - " + it.disciplina + " - " + it.horarioinicio.toString() + " - " + it.horariofim.toString()
+            tv_turma.text = it.id + " - " + it.professor + " - " + it.disciplina + " - " + it.horarioinicio.toString() + " - " + it.horariofim.toString()
             this.ll_entriesTurma.addView(tv_turma)
         }
         this.textview_resultTurma.text = "Fetched " + turmas.size + " disciplinas"

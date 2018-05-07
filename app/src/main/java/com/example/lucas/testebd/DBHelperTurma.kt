@@ -99,7 +99,7 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
     fun readTurmaProfessorHorario(idProf: String, horario: String): Turma
     {
         val db = writableDatabase
-        lateinit var turma: Turma
+        var turma= Turma("erro", "erro1", "erro", "erro", "erro", "erro")
         var cursor: Cursor? = null
         try {
             cursor = db.rawQuery("select * from " + DBContract.turmaEntry.TABLE_NAME + " WHERE " + DBContract.turmaEntry.COLUMN_IDPROF + "='" + idProf + "' and " +
@@ -108,7 +108,8 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         } catch (e: SQLiteException) {
             // if table not yet present, create it
             db.execSQL(SQL_CREATE_ENTRIES)
-
+            var erro= Turma("erro", "erro2", "erro", "erro", "erro", "erro")
+            return erro
         }
 
         var horarioinicio: String
