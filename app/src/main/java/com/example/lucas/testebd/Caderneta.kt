@@ -58,7 +58,10 @@ class Caderneta : AppCompatActivity()
         var hora= intent.getStringExtra(tempo)
         var nomeProf= intent.getStringExtra(nomeProfessor)
         var telaDados= findViewById<View>(R.id.textViewDados) as TextView
-        telaDados.setText("Hora: " + hora + ", Professor: " + nomeProf)
+        var db= DBHelperDisciplina (this)
+        var lista= db.readAllDisciplinas()
+        var disc= lista.get(0)
+        telaDados.setText("Hora: " + hora + ", Professor: " + nomeProf + ", Nome disciplina: " + disc.nome)
         Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT)
         //mostrarDados()
     }

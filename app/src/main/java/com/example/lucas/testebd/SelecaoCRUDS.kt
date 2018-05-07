@@ -32,4 +32,9 @@ class SelecaoCRUDS : AppCompatActivity() {
         val intentSala= Intent(this, CRUDSala::class.java)
         startActivity(intentSala)
     }
+    fun onClickTurma (view: View)
+    {
+        val intentTurma= Intent(this, CRUDTurma::class.java)
+        startActivity(intentTurma)
+    }
 }

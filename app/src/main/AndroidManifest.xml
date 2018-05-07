@@ -20,6 +20,7 @@
         <activity android:name=".CRUDProfessor" />
         <activity android:name=".CRUDDisciplina" />
         <activity android:name=".CRUDSala" />
+        <activity android:name=".CRUDTurma" />
         <activity android:name=".SelecaoCRUDS" />
         <activity android:name=".Caderneta" />
         <activity android:name=".Login"></activity>

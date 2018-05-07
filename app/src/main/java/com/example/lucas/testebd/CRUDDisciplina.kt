@@ -45,7 +45,7 @@ class CRUDDisciplina : AppCompatActivity() {
         disciplinas.forEach {
             var tv_user = TextView(this)
             tv_user.textSize = 30F
-            tv_user.text = it.nome.toString() + " - " + it.nome.toString()
+            tv_user.text = it.id.toString() + " - " + it.nome.toString()
             this.ll_entriesDisc.addView(tv_user)
         }
         this.textview_resultDisc.text = "Fetched " + disciplinas.size + " disciplinas"

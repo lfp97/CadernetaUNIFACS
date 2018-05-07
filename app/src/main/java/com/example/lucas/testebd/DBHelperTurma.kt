@@ -75,7 +75,6 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
             return ArrayList()
         }
 
-        var name: String
         var horarioinicio: String
         var horariofim: String
         var iddisc: String

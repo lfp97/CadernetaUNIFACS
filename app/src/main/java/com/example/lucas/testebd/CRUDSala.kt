@@ -19,19 +19,19 @@ class CRUDSala: AppCompatActivity() {
 
     fun addSala(v: View)
     {
-        var idSala = this.edittext_idSala.text.toString()
+        var idSala = this.edittext_TurmaidSala.text.toString()
         var numero = this.edittext_numeroSala.text.toString()
         var result = DBHelperSala.insertSala(Sala(idSala, numero))
         //clear all edittext s
         this.edittext_numeroSala.setText("")
-        this.edittext_idSala.setText("")
+        this.edittext_TurmaidSala.setText("")
         this.textview_resultSala.text= "Added salas : "+result
         this.ll_entriesSala.removeAllViews()
     }
 
     fun deleteSala(v: View)
     {
-        var idSala = this.edittext_idSala.text.toString()
+        var idSala = this.edittext_TurmaidSala.text.toString()
         val result = DBHelperSala.deleteSala(idSala)
         this.textview_resultSala.text = "Deleted sala : "+result
         this.ll_entriesSala.removeAllViews()
@@ -44,7 +44,7 @@ class CRUDSala: AppCompatActivity() {
         salas.forEach {
             var tv_user = TextView(this)
             tv_user.textSize = 30F
-            tv_user.text = it.numero.toString() + " - " + it.numero.toString()
+            tv_user.text = it.id.toString() + " - " + it.numero.toString()
             this.ll_entriesSala.addView(tv_user)
         }
         this.textview_resultSala.text = "Fetched " + salas.size + " salas"

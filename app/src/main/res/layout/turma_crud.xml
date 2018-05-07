@@ -22,7 +22,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/edittext_idTurma"
+            android:id="@+id/edittext_TurmaidTurma"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -43,21 +43,21 @@
             android:hint="Horário Fim" />
 
         <EditText
-            android:id="@+id/edittext_idProfessor"
+            android:id="@+id/edittext_TurmaidProfessor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Professor" />
 
         <EditText
-            android:id="@+id/edittext_idSala"
+            android:id="@+id/edittext_TurmaidSala"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Sala" />
 
         <EditText
-            android:id="@+id/edittext_idDisciplina"
+            android:id="@+id/edittext_TurmaidDisciplina"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

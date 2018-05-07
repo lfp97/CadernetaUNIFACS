@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import kotlinx.android.synthetic.main.disciplina_crud.*
 import kotlinx.android.synthetic.main.turma_crud.*
 
 class CRUDTurma : AppCompatActivity() {
@@ -21,24 +20,23 @@ class CRUDTurma : AppCompatActivity() {
 
     fun addTurma(v: View)
     {
-        var idTurma = this.edittext_idTurma.text.toString()
+        var idTurma = this.edittext_TurmaidTurma.text.toString()
         var horarioinicio = this.edittext_horarioinicio.text.toString()
         var horariofim = this.edittext_horariofim.text.toString()
-        var idDisc = this.edittext_idDisciplina.text.toString()
-        var idProf = this.edittext_idProfessor.text.toString()
-        var idSala = this.edittext_idSala.text.toString()
+        var idDisc = this.edittext_TurmaidDisciplina.text.toString()
+        var idProf = this.edittext_TurmaidProfessor.text.toString()
+        var idSala = this.edittext_TurmaidSala.text.toString()
 
         var result = DBHelperTurma.insertTurma(Turma(idTurma, horarioinicio, horariofim, idDisc, idProf, idSala))
         //clear all edittext s
-        this.edittext_nameDisc.setText("")
-        this.edittext_idDisciplina.setText("")
-        this.textview_resultDisc.text= "Added Disc : "+result
-        this.ll_entriesDisc.removeAllViews()
+        this.edittext_TurmaidDisciplina.setText("")
+        this.textview_resultTurma.text= "Added Disc : "+result
+        this.ll_entriesTurma.removeAllViews()
     }
 
     fun deleteTurma(v: View)
     {
-        var idTurma = this.edittext_idTurma.text.toString()
+        var idTurma = this.edittext_TurmaidTurma.text.toString()
         val result = DBHelperTurma.deleteTurma(idTurma)
         this.textview_resultTurma.text = "Deleted Turma : "+result
         this.ll_entriesTurma.removeAllViews()
@@ -51,8 +49,8 @@ class CRUDTurma : AppCompatActivity() {
         turmas.forEach {
             var tv_turma = TextView(this)
             tv_turma.textSize = 30F
-            tv_turma.text = it.horarioinicio.toString() + " - " + it.horariofim.toString()
-            this.ll_entriesDisc.addView(tv_turma)
+            tv_turma.text = it.id + " - " + it.disciplina + " - " + it.horarioinicio.toString() + " - " + it.horariofim.toString()
+            this.ll_entriesTurma.addView(tv_turma)
         }
         this.textview_resultTurma.text = "Fetched " + turmas.size + " disciplinas"
     }
