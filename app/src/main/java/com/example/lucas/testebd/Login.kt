@@ -26,9 +26,10 @@ class Login : AppCompatActivity()
         val mat= ETUsu.text.toString()
         var ETSenha= findViewById<View>(R.id.editTextSenha) as EditText
         val senha= ETSenha.text.toString()
-        var auxDB= DBHelperProfessor(this)
+        var auxDBProf= DBHelperProfessor(this)
+        var audDBTurma= DBHelperTurma(this)
 
-        var arrayProf= auxDB.readProfessor(mat)
+        var arrayProf= auxDBProf.readProfessor(mat)
         if (arrayProf.isEmpty()) //caso nao encontre o usuario
         {
             Toast.makeText(this, "Usuário não existe!", Toast.LENGTH_LONG)
@@ -43,9 +44,12 @@ class Login : AppCompatActivity()
                 val aux= LocalTime.now() //pega o horario do celular
                 val formatador= DateTimeFormatter.ISO_TIME //formatar para apenas a hora
                 val horario= aux.format(formatador) //aplicando a formatacao ao valor capturado
+                val hora= horario.substring(0, 2) //transformando em string somente a hora
+
+
 
                 val intentLogar= Intent(this, Caderneta::class.java)
-                intentLogar.putExtra(Caderneta.tempo, horario)
+                intentLogar.putExtra(Caderneta.tempo, hora)
                 intentLogar.putExtra(Caderneta.nomeProfessor, professor.nome)
                 startActivity(intentLogar)
             }
