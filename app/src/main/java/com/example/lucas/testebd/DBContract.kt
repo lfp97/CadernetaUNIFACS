@@ -34,4 +34,13 @@ object DBContract
             val COLUMN_NAME = "NOME"
         }
     }
+    class salaEntry: BaseColumns
+    {
+        companion object
+        {
+            val TABLE_NAME = "Sala"
+            val COLUMN_ID = "ID"
+            val COLUMN_NUMERO = "NUMERO"
+        }
+    }
 }
