@@ -66,4 +66,14 @@ object DBContract
             val COLUMN_IDTURMA = "IDTURMA"
         }
     }
+    class faltaEntry: BaseColumns
+    {
+        companion object
+        {
+            val TABLE_NAME = "Falta"
+            val COLUMN_ID = "ID"
+            val COLUMN_IDALUNO = "IDALUNO"
+            val COLUMN_IDTURMA = "IDTURMA"
+        }
+    }
 }

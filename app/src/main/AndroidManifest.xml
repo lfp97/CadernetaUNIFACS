@@ -24,7 +24,8 @@
         <activity android:name=".SelecaoCRUDS" />
         <activity android:name=".Caderneta" />
         <activity android:name=".Login" />
-        <activity android:name=".CRUDAlunos_Turmas"></activity>
+        <activity android:name=".CRUDAlunos_Turmas" />
+        <activity android:name=".CRUDFalta"></activity>
     </application>
 
 </manifest>

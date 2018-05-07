@@ -42,4 +42,9 @@ class SelecaoCRUDS : AppCompatActivity() {
         val intentAT= Intent(this, CRUDAlunos_Turmas::class.java)
         startActivity(intentAT)
     }
+    fun onClickFalta (view: View)
+    {
+        val intentF= Intent(this, CRUDFalta::class.java)
+        startActivity(intentF)
+    }
 }

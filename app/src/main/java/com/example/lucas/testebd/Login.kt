@@ -95,7 +95,7 @@ class Login : AppCompatActivity()
                     intentLogar.putExtra(Caderneta.nomeProfessor, professor.nome)
                     intentLogar.putExtra(Caderneta.idDisc, turma.disciplina)
                     intentLogar.putExtra(Caderneta.numeroSala, turma.sala)
-                    intentLogar.putExtra(Caderneta.idTurma, turma.id)
+                    intentLogar.putExtra(Caderneta.comIdTurma, turma.id)
                     startActivity(intentLogar)
                 }
             }

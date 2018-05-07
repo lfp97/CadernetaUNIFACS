@@ -76,13 +76,13 @@ class DBHelperAlunos_Turmas(context: Context): SQLiteOpenHelper(context, DATABAS
         val DATABASE_NAME = "Caderneta.db"
 
         private val SQL_CREATE_ENTRIES =
-                "CREATE TABLE " + DBContract.turmaEntry.TABLE_NAME + " (" +
+                "CREATE TABLE " + DBContract.alunos_turmasEntry.TABLE_NAME + " (" +
                         DBContract.alunos_turmasEntry.COLUMN_IDALUNO + " TEXT PRIMARY KEY," +
                         DBContract.alunos_turmasEntry.COLUMN_IDTURMA + " TEXT, FOREIGN KEY (IDALUNO) REFERENCES ALUNO(ID), FOREIGN KEY (IDTURMA) REFERENCES TURMA(ID))"
         /*
         create table ALUNOS_TURMAS (IDALUNO text primary key, IDTURMA text, foreign key (IDALUNO) references Aluno(ID), foreign key (IDTURMA) references Turma(ID));
         */
 
-        private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DBContract.salaEntry.TABLE_NAME
+        private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DBContract.alunos_turmasEntry.TABLE_NAME
     }
 }

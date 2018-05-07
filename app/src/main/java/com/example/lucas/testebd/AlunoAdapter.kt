@@ -31,7 +31,9 @@ class AlunoAdapter(private val context: Context, private val dataSource: ArrayLi
 
         val TextViewNome = rowView.findViewById(R.id.aluno_list_nome) as TextView
         val TextViewMatricula = rowView.findViewById(R.id.aluno_list_matricula) as TextView
-        //val checkBox= rowView.findViewById(R.id.checkBoxAluno) as CheckBox
+        val checkBox= rowView.findViewById(R.id.checkBoxAluno) as CheckBox
+
+
 
         val aluno = getItem(position) as Aluno
         TextViewNome.text = aluno.nome
