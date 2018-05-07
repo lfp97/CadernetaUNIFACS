@@ -13,7 +13,7 @@ class CRUDTurma : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.disciplina_crud)
+        setContentView(R.layout.turma_crud)
 
         DBHelperTurma = DBHelperTurma(this)
     }
