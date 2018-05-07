@@ -11,7 +11,12 @@ class Caderneta : AppCompatActivity()
     private lateinit var dataBaseHelperChamadaAlunos: DBHelperAluno
     private lateinit var dataBaseHelperChamadaDadosProf: DBHelperProfessor
     //private lateinit var dataBaseHelperChamadaProfessores: DBHelperProfessor um pra professor, e turma
-    private lateinit var btnSalvar: Button
+
+    companion object
+    {
+        const val tempo= "Tempo"
+        const val nomeProfessor= "Nome"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -27,13 +32,15 @@ class Caderneta : AppCompatActivity()
         var listaAlunos = dataBaseHelperChamadaAlunos.readAllAlunos()
         var adapter= AlunoAdapter(this, listaAlunos)
         listView.adapter = adapter
+
         //mostrarDados()
     }
 
     private fun mostrarDados()
     {
-        dataBaseHelperChamadaDadosProf= DBHelperProfessor(this)
         var telaDados= findViewById<View>(R.id.textViewDados) as TextView
+        dataBaseHelperChamadaDadosProf= DBHelperProfessor(this)
+
         var listaResults= dataBaseHelperChamadaDadosProf.readProfessor("1")
         if (listaResults.isEmpty())
             telaDados.setText("Banco Vazio")
@@ -48,7 +55,11 @@ class Caderneta : AppCompatActivity()
     fun onClickSalvar (view: View) //implementar
     {
         //var listaAlunosFaltantes= listView.
+        var hora= intent.getStringExtra(tempo)
+        var nomeProf= intent.getStringExtra(nomeProfessor)
+        var telaDados= findViewById<View>(R.id.textViewDados) as TextView
+        telaDados.setText("Hora: " + hora + ", Professor: " + nomeProf)
         Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT)
-        mostrarDados()
+        //mostrarDados()
     }
 }

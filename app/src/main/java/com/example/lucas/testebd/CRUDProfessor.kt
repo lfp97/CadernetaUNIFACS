@@ -6,17 +6,13 @@ import android.view.View
 import android.widget.TextView
 import kotlinx.android.synthetic.main.professor_crud.*
 
-class CRUDProfessor : AppCompatActivity() {
-
+class CRUDProfessor : AppCompatActivity()
+{
     lateinit var DBHelperProfessor : DBHelperProfessor
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
-
-        //setContentView(R.layout.activity_main)
         setContentView(R.layout.professor_crud)
-
-
         DBHelperProfessor = DBHelperProfessor(this)
     }
 
