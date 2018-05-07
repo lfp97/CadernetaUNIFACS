@@ -27,4 +27,9 @@ class SelecaoCRUDS : AppCompatActivity() {
         val intentDisc= Intent(this, CRUDDisciplina::class.java)
         startActivity(intentDisc)
     }
+    fun onClickSala (view: View)
+    {
+        val intentSala= Intent(this, CRUDSala::class.java)
+        startActivity(intentSala)
+    }
 }

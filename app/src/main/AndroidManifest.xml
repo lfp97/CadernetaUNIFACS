@@ -18,9 +18,10 @@
         </activity>
         <activity android:name=".CRUDAluno" />
         <activity android:name=".CRUDProfessor" />
-        <activity android:name=".Caderneta" />
-        <activity android:name=".SelecaoCRUDS" />
         <activity android:name=".CRUDDisciplina" />
+        <activity android:name=".CRUDSala" />
+        <activity android:name=".SelecaoCRUDS" />
+        <activity android:name=".Caderneta" />
         <activity android:name=".Login"></activity>
     </application>
 
