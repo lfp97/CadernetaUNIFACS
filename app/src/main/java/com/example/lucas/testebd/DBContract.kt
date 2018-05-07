@@ -43,4 +43,18 @@ object DBContract
             val COLUMN_NUMERO = "NUMERO"
         }
     }
+    class turmaEntry: BaseColumns
+    {
+        companion object
+        {
+            val TABLE_NAME = "Turma"
+            val COLUMN_ID = "ID"
+            val COLUMN_HORARIOINICIO = "HORARIOINICIO"
+            val COLUMN_HORARIOFIM = "HORARIOFIM"
+            val COLUMN_IDDISC = "IDDISC"
+            val COLUMN_IDPROF = "IDPROF"
+            val COLUMN_IDSALA = "IDSALA"
+
+        }
+    }
 }
