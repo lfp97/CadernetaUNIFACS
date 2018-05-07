@@ -27,7 +27,7 @@ class Login : AppCompatActivity()
         var ETSenha= findViewById<View>(R.id.editTextSenha) as EditText
         val senha= ETSenha.text.toString()
         var auxDBProf= DBHelperProfessor(this)
-        var audDBTurma= DBHelperTurma(this)
+        var auxDBTurma= DBHelperTurma(this)
 
         var arrayProf= auxDBProf.readProfessor(mat)
         if (arrayProf.isEmpty()) //caso nao encontre o usuario
@@ -42,16 +42,22 @@ class Login : AppCompatActivity()
             if (professor.matricula.equals(mat) && professor.senha.equals(senha)) //caso autentique
             {
                 val aux= LocalTime.now() //pega o horario do celular
-                val formatador= DateTimeFormatter.ISO_TIME //formatar para apenas a hora
+                val formatador= DateTimeFormatter.ISO_TIME //confirmando que so vai pegar hora
                 val horario= aux.format(formatador) //aplicando a formatacao ao valor capturado
-                val hora= horario.substring(0, 2) //transformando em string somente a hora
+                var hora= horario.substring(0, 5)//cortando para ter somente HH:MM, descartando segundos e etc
 
+                var turma= auxDBTurma.readTurmaProfessorHorario(professor.matricula, hora)
 
-
-                val intentLogar= Intent(this, Caderneta::class.java)
-                intentLogar.putExtra(Caderneta.tempo, hora)
-                intentLogar.putExtra(Caderneta.nomeProfessor, professor.nome)
-                startActivity(intentLogar)
+                if (turma.horarioinicio.equals(hora))
+                {
+                    val intentLogar= Intent(this, Caderneta::class.java)
+                    intentLogar.putExtra(Caderneta.hora, hora)
+                    intentLogar.putExtra(Caderneta.nomeProfessor, professor.nome)
+                    intentLogar.putExtra(Caderneta.nomeDisc, turma.disciplina)
+                    intentLogar.putExtra(Caderneta.numeroSala, turma.sala)
+                    intentLogar.putExtra(Caderneta.idTurma, turma.id)
+                    startActivity(intentLogar)
+                }
             }
             else//caso tenha algum erro
             {

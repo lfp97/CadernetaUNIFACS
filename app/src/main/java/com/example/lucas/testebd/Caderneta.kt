@@ -10,12 +10,15 @@ class Caderneta : AppCompatActivity()
     private lateinit var listView: ListView
     private lateinit var dataBaseHelperChamadaAlunos: DBHelperAluno
     private lateinit var dataBaseHelperChamadaDadosProf: DBHelperProfessor
-    //private lateinit var dataBaseHelperChamadaProfessores: DBHelperProfessor um pra professor, e turma
 
     companion object
     {
-        const val tempo= "Tempo"
         const val nomeProfessor= "Nome"
+        const val nomeDisc= "nomeDisc"
+        const val idTurma= "idDaTurma"
+        const val numeroSala= "numSala"
+        const val hora= "Hora"
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -55,13 +58,14 @@ class Caderneta : AppCompatActivity()
     fun onClickSalvar (view: View) //implementar
     {
         //var listaAlunosFaltantes= listView.
-        var hora= intent.getStringExtra(tempo)
+        var hora= intent.getStringExtra(hora)
         var nomeProf= intent.getStringExtra(nomeProfessor)
         var telaDados= findViewById<View>(R.id.textViewDados) as TextView
-        var db= DBHelperDisciplina (this)
-        var lista= db.readAllDisciplinas()
-        var disc= lista.get(0)
-        telaDados.setText("Hora: " + hora + ", Professor: " + nomeProf + ", Nome disciplina: " + disc.nome)
+        var nomeDisc= intent.getStringExtra(nomeDisc)
+        var idTurma= intent.getStringExtra(idTurma)
+        var numSala= intent.getStringExtra(numeroSala)
+        telaDados.setText("Hora: " + hora + ", Professor: " + nomeProf + "\nNome disciplina: " + nomeDisc + ", idTurma: " +
+        idTurma + ", Número da Sala: " + numSala)
         Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT)
         //mostrarDados()
     }

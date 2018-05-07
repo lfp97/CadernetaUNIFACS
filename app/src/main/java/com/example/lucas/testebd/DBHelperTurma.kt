@@ -96,6 +96,40 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         return turmas
     }
 
+    fun readTurmaProfessorHorario(idProf: String, horario: String): Turma
+    {
+        val db = writableDatabase
+        lateinit var turma: Turma
+        var cursor: Cursor? = null
+        try {
+            cursor = db.rawQuery("select * from " + DBContract.turmaEntry.TABLE_NAME + " WHERE " + DBContract.turmaEntry.COLUMN_IDPROF + "='" + idProf + "' and " +
+                    DBContract.turmaEntry.COLUMN_HORARIOINICIO + "='" + horario + "'", null)
+                                        //select * from Turma where IDPROF= '1' and HORARIOINICIO= '19:00'
+        } catch (e: SQLiteException) {
+            // if table not yet present, create it
+            db.execSQL(SQL_CREATE_ENTRIES)
+
+        }
+
+        var horarioinicio: String
+        var horariofim: String
+        var iddisc: String
+        var idprof: String
+        var idsala: String
+
+        if (cursor!!.moveToFirst())
+        {
+                horarioinicio = cursor.getString(cursor.getColumnIndex(DBContract.turmaEntry.COLUMN_HORARIOINICIO))
+                horariofim = cursor.getString(cursor.getColumnIndex(DBContract.turmaEntry.COLUMN_HORARIOFIM))
+                iddisc = cursor.getString(cursor.getColumnIndex(DBContract.turmaEntry.COLUMN_IDDISC))
+                idprof = cursor.getString(cursor.getColumnIndex(DBContract.turmaEntry.COLUMN_IDPROF))
+                idsala = cursor.getString(cursor.getColumnIndex(DBContract.turmaEntry.COLUMN_IDSALA))
+
+                turma= Turma(idProf, horarioinicio, horariofim, iddisc, idProf, idsala)
+        }
+        return turma
+    }
+
     fun readAllTurmas(): ArrayList<Turma> {
         val turmas = ArrayList<Turma>()
         val db = writableDatabase
