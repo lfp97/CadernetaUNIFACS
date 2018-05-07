@@ -130,6 +130,12 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         }
         return turma
     }
+    fun DEBUGreadTurmaProfessorHorario(idProf: String, horario: String): String
+    {
+        var result= "select * from " + DBContract.turmaEntry.TABLE_NAME + " WHERE " + DBContract.turmaEntry.COLUMN_IDPROF + "='" + idProf + "' and " +
+                DBContract.turmaEntry.COLUMN_HORARIOINICIO + "='" + horario + "'"
+        return result
+    }
 
     fun readAllTurmas(): ArrayList<Turma>
     {

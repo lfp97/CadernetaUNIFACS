@@ -21,7 +21,7 @@ class Login : AppCompatActivity()
 
 
 
-            val aux= LocalTime.now() //pega o horario do celular
+            /*val aux= LocalTime.now() //pega o horario do celular
             val formatador= DateTimeFormatter.ISO_TIME //confirmando que so vai pegar hora
             val horario= aux.format(formatador) //aplicando a formatacao ao valor capturado
             var horaRaw= horario.substring(0, 5)//cortando para ter somente HH:MM, descartando segundos e etc
@@ -39,9 +39,12 @@ class Login : AppCompatActivity()
         ETUsu.setText(hora)
         var ETSenha= findViewById<View>(R.id.editTextSenha) as EditText
         var auxDBTurma= DBHelperTurma(this)
-        var turm: Turma//= Turma("erro", "erro", "erro", "erro", "erro", "erro")
-        turm= auxDBTurma.readTurmaProfessorHorario("112001", hora)
-        ETSenha.setText("Horario da turma: " + turm.horarioinicio)
+        var turm: Turma
+        turm= auxDBTurma.readTurmaProfessorHorario("1", hora)
+        ETSenha.setText("Horario da turma: " + turm.horarioinicio)*/
+
+        //var deb= auxDBTurma.DEBUGreadTurmaProfessorHorario("1", hora) //debug
+        //ETSenha.setText(deb)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -81,8 +84,7 @@ class Login : AppCompatActivity()
                         hora= "19:00"
                 }
 
-
-                var turma= auxDBTurma.readTurmaProfessorHorario(professor.matricula, hora)
+                var turma= auxDBTurma.readTurmaProfessorHorario(professor.id, hora)
                 //var listaTurmas= auxDBTurma.readAllTurmas()
                 //var turma= listaTurmas.get(0)
 
