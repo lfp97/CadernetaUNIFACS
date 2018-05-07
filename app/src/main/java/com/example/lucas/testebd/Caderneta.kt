@@ -74,10 +74,10 @@ class Caderneta : AppCompatActivity()
         }
         else
         {
-            var alunoDummy= Aluno("999", "dummy", "123456")
-            var listaDummy= ArrayList<Aluno>()
+            var alunoDummy= Alunos_Turmas("999", "666")
+            var listaDummy= ArrayList<Alunos_Turmas>()
             listaDummy.add(alunoDummy)
-            var adapter= AlunoAdapter(this, listaDummy)
+            var adapter= Alunos_TurmasAdapter(this, listaDummy)
             listView.adapter = adapter
         }
 
