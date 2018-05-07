@@ -5,24 +5,24 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/aluno_list_text_layout"
+        android:id="@+id/aluno2_list_text_layout"
         android:layout_width="362dp"
         android:layout_height="30dp"
         android:layout_centerInParent="true"
         tools:ignore="NotSibling">
 
         <TextView
-            android:id="@+id/aluno_list_nome"
+            android:id="@+id/aluno2_list_id"
             android:layout_width="128dp"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="38dp"
             android:textSize="18sp"
-            tools:text="Nome" />
+            tools:text="ID" />
 
         <TextView
-            android:id="@+id/aluno_list_matricula"
+            android:id="@+id/aluno2_list_nome"
             android:layout_width="141dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
@@ -31,15 +31,15 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:textSize="16sp"
-            tools:text="Matricula" />
+            tools:text="Nome" />
 
     </RelativeLayout>
 
     <CheckBox
-        android:id="@+id/checkBoxAluno"
+        android:id="@+id/checkBoxAluno2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/aluno_list_text_layout"
+        android:layout_alignStart="@+id/aluno2_list_text_layout"
         android:focusable="false"
         android:layout_centerVertical="true" />
 

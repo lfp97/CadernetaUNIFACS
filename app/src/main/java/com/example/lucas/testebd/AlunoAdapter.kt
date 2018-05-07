@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
-import android.widget.ImageView
 import android.widget.TextView
 
-class AlunoAdapter(private val context: Context, private val dataSource: ArrayList<Aluno>) : BaseAdapter()
+class AlunoAdapter(private val context: Context, private val dataSource: ArrayList<Aluno>): BaseAdapter()
 {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
