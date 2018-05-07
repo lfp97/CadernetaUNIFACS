@@ -18,7 +18,7 @@ class CRUDProfessor : AppCompatActivity()
 
     fun addProf(v: View)
     {
-        var idProfessor = this.edittext_TurmaidProfessor.text.toString()
+        var idProfessor = this.edittext_IdProf.text.toString()
         var name = this.edittext_nameProf.text.toString()
         var matricula = this.edittext_MatriculaProf.text.toString()
         var senha= this.edittext_SenhaProf.text.toString()
@@ -27,14 +27,14 @@ class CRUDProfessor : AppCompatActivity()
         this.edittext_MatriculaProf.setText("")
         this.edittext_SenhaProf.setText("")
         this.edittext_nameProf.setText("")
-        this.edittext_TurmaidProfessor.setText("")
+        this.edittext_IdProf.setText("")
         this.textview_resultProf.text = "Added user : "+result
         this.ll_entriesProf.removeAllViews()
     }
 
     fun deleteProf(v: View)
     {
-        var idProfessor = this.edittext_TurmaidProfessor.text.toString()
+        var idProfessor = this.edittext_IdProf.text.toString()
         val result = DBHelperProfessor.deleteProfessor(idProfessor)
         this.textview_resultProf.text = "Deleted user : "+result
         this.ll_entriesProf.removeAllViews()

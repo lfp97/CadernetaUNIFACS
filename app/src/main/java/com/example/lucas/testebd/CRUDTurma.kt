@@ -24,7 +24,7 @@ class CRUDTurma : AppCompatActivity() {
         var horarioinicio = this.edittext_horarioinicio.text.toString()
         var horariofim = this.edittext_horariofim.text.toString()
         var idDisc = this.edittext_TurmaidDisciplina.text.toString()
-        var idProf = this.edittext_TurmaidProfessor.text.toString()
+        var idProf = this.edittext_TurmaIdProf.text.toString()
         var idSala = this.edittext_TurmaidSala.text.toString()
 
         var result = DBHelperTurma.insertTurma(Turma(idTurma, horarioinicio, horariofim, idDisc, idProf, idSala))
