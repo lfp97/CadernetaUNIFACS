@@ -58,8 +58,10 @@ class DBHelperAluno(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         return true
     }
 
-    fun readAluno(idAluno: String): ArrayList<Aluno> {
-        val alunos = ArrayList<Aluno>()
+    fun readAluno(idAluno: String): Aluno {
+        val padrao= Aluno("-1", "ERRO", "9999")
+        var flag= false
+        lateinit var aluno: Aluno
         val db = writableDatabase
         var cursor: Cursor? = null
         try {
@@ -67,21 +69,27 @@ class DBHelperAluno(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         } catch (e: SQLiteException) {
             // if table not yet present, create it
             db.execSQL(SQL_CREATE_ENTRIES)
-            return ArrayList()
+            return padrao
         }
 
+        var idAluno: String
         var name: String
         var matricula: String
         if (cursor!!.moveToFirst()) {
             while (cursor.isAfterLast == false) {
+                idAluno = cursor.getString(cursor.getColumnIndex(DBContract.alunoEntry.COLUMN_ID))
                 name = cursor.getString(cursor.getColumnIndex(DBContract.alunoEntry.COLUMN_NAME))
                 matricula = cursor.getString(cursor.getColumnIndex(DBContract.alunoEntry.COLUMN_MATRICULA))
 
-                alunos.add(Aluno(idAluno, name, matricula))
+                aluno= (Aluno(idAluno, name, matricula))
+                flag= true
                 cursor.moveToNext()
             }
         }
-        return alunos
+        if (flag)
+            return aluno
+        else
+            return padrao
     }
 
     fun readAllAlunos(): ArrayList<Aluno> {

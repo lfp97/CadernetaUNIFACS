@@ -10,11 +10,13 @@ class Caderneta : AppCompatActivity()
     private lateinit var listView: ListView
     private lateinit var dataBaseHelperChamadaAlunos: DBHelperAluno
     private lateinit var dataBaseHelperChamadaDadosProf: DBHelperProfessor
+    private lateinit var dataBaseHelperChamadaTurma: DBHelperTurma
+    private lateinit var dataBaseHelperChamadaAT: DBHelperAlunos_Turmas
 
     companion object
     {
         const val nomeProfessor= "Nome"
-        const val nomeDisc= "nomeDisc"
+        const val idDisc= "idDisc"
         const val idTurma= "idDaTurma"
         const val numeroSala= "numSala"
         const val hora= "Hora"
@@ -25,48 +27,71 @@ class Caderneta : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tela_caderneta)
+
         listView= findViewById<View>(R.id.listView) as ListView
         dataBaseHelperChamadaAlunos= DBHelperAluno(this)
+        dataBaseHelperChamadaAT= DBHelperAlunos_Turmas(this)
+
+        var hora= intent.getStringExtra(hora)
+        var nomeProf= intent.getStringExtra(nomeProfessor)
+        var telaDados= findViewById<View>(R.id.textViewDados) as TextView
+        var idDisc= intent.getStringExtra(idDisc)
+        var idTurma= intent.getStringExtra(idTurma)
+        var numSala= intent.getStringExtra(numeroSala)
+        telaDados.setText("Hora: " + hora + ", Professor: " + nomeProf + "\nidDisc: " + idDisc + ", idTurma: " +
+                idTurma + ", Número da Sala: " + numSala)
         popularListView()
     }
 
+    /*fun getListaAlunos(): ArrayList<Aluno>
+    {
+        var listaAT = dataBaseHelperChamadaAT.readAll()
+        return
+    }*/
+
     private fun popularListView()
     {
-        var listaAlunos = dataBaseHelperChamadaAlunos.readAllAlunos()
-        var adapter= AlunoAdapter(this, listaAlunos)
-        listView.adapter = adapter
-
-        //mostrarDados()
-    }
-
-    private fun mostrarDados()
-    {
-        var telaDados= findViewById<View>(R.id.textViewDados) as TextView
-        dataBaseHelperChamadaDadosProf= DBHelperProfessor(this)
-
-        var listaResults= dataBaseHelperChamadaDadosProf.readProfessor("1")
-        if (listaResults.isEmpty())
-            telaDados.setText("Banco Vazio")
-        else
+        var listaAT = dataBaseHelperChamadaAT.readAll()
+        //var alunoDummy= Aluno("99", "dummy", "99999")
+        val listaAlunos= ArrayList<Aluno>()
+        //listaAlunos.add(alunoDummy)
+        var flag= false
+        for (i in 0..listaAT.size-1)
         {
-            var aux= listaResults.get(0)
-            telaDados.setText("Professor: " + aux.nome)
+            var at= listaAT.get(i)
+            var idAlunoAT= at.idAluno
+            //var aluno= dataBaseHelperChamadaAlunos.readAluno(listaAT.get(i).idAluno)
+            var aluno= dataBaseHelperChamadaAlunos.readAluno(idAlunoAT)
+            listaAlunos.add(aluno)
+            flag= true
         }
-
+        if (flag)
+        {
+            var adapter= AlunoAdapter(this, listaAlunos)
+            listView.adapter = adapter
+        }
     }
 
     fun onClickSalvar (view: View) //implementar
     {
-        //var listaAlunosFaltantes= listView.
-        var hora= intent.getStringExtra(hora)
-        var nomeProf= intent.getStringExtra(nomeProfessor)
-        var telaDados= findViewById<View>(R.id.textViewDados) as TextView
-        var nomeDisc= intent.getStringExtra(nomeDisc)
-        var idTurma= intent.getStringExtra(idTurma)
-        var numSala= intent.getStringExtra(numeroSala)
-        telaDados.setText("Hora: " + hora + ", Professor: " + nomeProf + "\nNome disciplina: " + nomeDisc + ", idTurma: " +
-        idTurma + ", Número da Sala: " + numSala)
-        Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT)
-        //mostrarDados()
+        var listaAT = dataBaseHelperChamadaAT.readAll()
+        //var alunoDummy= Aluno("99", "dummy", "99999")
+        val listaAlunos= ArrayList<Aluno>()
+        //listaAlunos.add(alunoDummy)
+        var flag= false
+        var cont: Int
+        cont=1
+        while (cont<=listaAT.size)
+        {
+            var aluno= dataBaseHelperChamadaAlunos.readAluno(listaAT.get(cont).toString())
+            listaAlunos.add(aluno)
+            cont++
+            flag= true
+        }
+        if (flag)
+        {
+            var adapter= AlunoAdapter(this, listaAlunos)
+            listView.adapter = adapter
+        }
     }
 }

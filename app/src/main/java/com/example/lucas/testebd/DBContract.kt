@@ -57,4 +57,13 @@ object DBContract
 
         }
     }
+    class alunos_turmasEntry: BaseColumns
+    {
+        companion object
+        {
+            val TABLE_NAME = "Alunos_Turmas"
+            val COLUMN_IDALUNO = "IDALUNO"
+            val COLUMN_IDTURMA = "IDTURMA"
+        }
+    }
 }

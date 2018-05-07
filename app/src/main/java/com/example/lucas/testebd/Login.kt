@@ -44,16 +44,29 @@ class Login : AppCompatActivity()
                 val aux= LocalTime.now() //pega o horario do celular
                 val formatador= DateTimeFormatter.ISO_TIME //confirmando que so vai pegar hora
                 val horario= aux.format(formatador) //aplicando a formatacao ao valor capturado
-                var hora= horario.substring(0, 5)//cortando para ter somente HH:MM, descartando segundos e etc
+                var horaRaw= horario.substring(0, 5)//cortando para ter somente HH:MM, descartando segundos e etc
+                lateinit var hora: String
+                if (horaRaw[0].equals('0'))
+                    hora= "07:00"
+                else //1x:00
+                {
+                    if(horaRaw[1].equals(0))
+                        hora= "10:00"
+                    else
+                        hora= "19:00"
+                }
 
-                var turma= auxDBTurma.readTurmaProfessorHorario(professor.matricula, hora)
+
+                //var turma= auxDBTurma.readTurmaProfessorHorario(professor.matricula, hora)
+                var listaTurmas= auxDBTurma.readAllTurmas()
+                var turma= listaTurmas.get(0)
 
                 if (turma.horarioinicio.equals(hora))
                 {
                     val intentLogar= Intent(this, Caderneta::class.java)
                     intentLogar.putExtra(Caderneta.hora, hora)
                     intentLogar.putExtra(Caderneta.nomeProfessor, professor.nome)
-                    intentLogar.putExtra(Caderneta.nomeDisc, turma.disciplina)
+                    intentLogar.putExtra(Caderneta.idDisc, turma.disciplina)
                     intentLogar.putExtra(Caderneta.numeroSala, turma.sala)
                     intentLogar.putExtra(Caderneta.idTurma, turma.id)
                     startActivity(intentLogar)
@@ -61,7 +74,6 @@ class Login : AppCompatActivity()
             }
             else//caso tenha algum erro
             {
-                Toast.makeText(this, "Usuário ou senha errados!", Toast.LENGTH_LONG)
                 ETUsu.setText("")
                 ETSenha.setText("")
             }

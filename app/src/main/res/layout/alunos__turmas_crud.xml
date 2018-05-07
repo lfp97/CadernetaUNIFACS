@@ -4,10 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelecaoCRUDS">
+    tools:context=".CRUDAlunos_Turmas">
 
-    <Button
-        android:id="@+id/buttonCRUDProf"
+    <LinearLayout
+        android:id="@+id/ll_entriesAlunos_Turmas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.608"
+        tools:layout_editor_absoluteX="0dp"></LinearLayout>
+
+    <EditText
+        android:id="@+id/editTextATIDALUNO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -16,55 +29,17 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="onClickProfessor"
-        android:text="Professor"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:ems="10"
+        android:hint="ID Aluno"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ll_entriesAlunos_Turmas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCRUDAluno"
-        app:layout_constraintVertical_bias="0.107" />
-
-    <Button
-        android:id="@+id/buttonCRUDAluno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onClickAluno"
-        android:text="Aluno"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.242" />
 
-    <Button
-        android:id="@+id/buttonDisc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
-        android:onClick="onClickDisciplina"
-        android:text="Disciplina"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCRUDProf"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/buttonSala"
+    <EditText
+        android:id="@+id/editTextATIDTURMA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -73,17 +48,17 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="onClickSala"
-        android:text="Sala"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:ems="10"
+        android:hint="ID Turma"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ll_entriesAlunos_Turmas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDisc"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextATIDALUNO"
+        app:layout_constraintVertical_bias="0.067" />
 
     <Button
-        android:id="@+id/buttonTurma"
+        android:id="@+id/buttonATADD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -92,16 +67,17 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="onClickTurma"
-        android:text="Turma"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="onClickAdd"
+        android:text="ADD"
+        app:layout_constraintBottom_toTopOf="@+id/ll_entriesAlunos_Turmas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSala" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextATIDTURMA"
+        app:layout_constraintVertical_bias="0.288" />
 
     <Button
-        android:id="@+id/buttonAT"
+        android:id="@+id/buttonATSHOW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -110,12 +86,27 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="onClickAlunos_Turmas"
-        android:text="Alunos_Turmas"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="onClickShowAll"
+        android:text="Show all"
+        app:layout_constraintBottom_toTopOf="@+id/ll_entriesAlunos_Turmas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.011"
+        app:layout_constraintHorizontal_bias="0.698"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextATIDTURMA"
+        app:layout_constraintVertical_bias="0.288" />
+
+    <TextView
+        android:id="@+id/textViewATResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/ll_entriesAlunos_Turmas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonATADD" />
 </android.support.constraint.ConstraintLayout>

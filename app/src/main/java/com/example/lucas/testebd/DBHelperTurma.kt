@@ -125,12 +125,13 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
                 idprof = cursor.getString(cursor.getColumnIndex(DBContract.turmaEntry.COLUMN_IDPROF))
                 idsala = cursor.getString(cursor.getColumnIndex(DBContract.turmaEntry.COLUMN_IDSALA))
 
-                turma= Turma(idProf, horarioinicio, horariofim, iddisc, idProf, idsala)
+                turma= Turma(idProf, horarioinicio, horariofim, iddisc, idprof, idsala)
         }
         return turma
     }
 
-    fun readAllTurmas(): ArrayList<Turma> {
+    fun readAllTurmas(): ArrayList<Turma>
+    {
         val turmas = ArrayList<Turma>()
         val db = writableDatabase
         var cursor: Cursor? = null
