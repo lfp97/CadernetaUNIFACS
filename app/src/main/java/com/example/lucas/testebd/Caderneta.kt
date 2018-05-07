@@ -51,7 +51,39 @@ class Caderneta : AppCompatActivity()
 
     private fun popularListView()
     {
-        var listaAT = dataBaseHelperChamadaAT.readAll()
+        var listaAT= dataBaseHelperChamadaAT.readAll()
+        var listaAlunos= ArrayList<Aluno>()
+        var it= listaAT.iterator()
+        var flag= false
+        while (it.hasNext())
+        {
+            var aux= it.next()
+            var idAlu= aux.idAluno
+            var idTur= aux.idTurma
+            if (idTur.equals(idTurma))
+            {
+                listaAlunos.add(dataBaseHelperChamadaAlunos.readAluno(idAlu))
+                flag= true
+            }
+
+        }
+        if (flag)
+        {
+            var adapter= AlunoAdapter(this, listaAlunos)
+            listView.adapter = adapter
+        }
+        else
+        {
+            var alunoDummy= Aluno("999", "dummy", "123456")
+            var listaDummy= ArrayList<Aluno>()
+            listaDummy.add(alunoDummy)
+            var adapter= AlunoAdapter(this, listaDummy)
+            listView.adapter = adapter
+        }
+
+
+
+        /*var listaAT = dataBaseHelperChamadaAT.readAll()
         //var alunoDummy= Aluno("99", "dummy", "99999")
         val listaAlunos= ArrayList<Aluno>()
         //listaAlunos.add(alunoDummy)
@@ -69,7 +101,7 @@ class Caderneta : AppCompatActivity()
         {
             var adapter= AlunoAdapter(this, listaAlunos)
             listView.adapter = adapter
-        }
+        }*/
     }
 
     fun onClickSalvar (view: View) //implementar
