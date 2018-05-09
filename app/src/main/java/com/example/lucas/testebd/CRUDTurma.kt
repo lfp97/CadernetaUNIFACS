@@ -30,6 +30,7 @@ class CRUDTurma : AppCompatActivity() {
         var result = DBHelperTurma.insertTurma(Turma(idTurma, horarioinicio, horariofim, idDisc, idProf, idSala))
         //clear all edittext s
         this.edittext_TurmaidDisciplina.setText("")
+
         this.textview_resultTurma.text= "Added Disc : "+result
         this.ll_entriesTurma.removeAllViews()
     }

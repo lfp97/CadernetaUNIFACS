@@ -32,7 +32,6 @@ class Caderneta : AppCompatActivity()
 
         listView= findViewById<View>(R.id.listView) as ListView
 
-        //listView.choiceMode= CHOICE_MODE_MULTIPLE
         dataBaseHelperChamadaAlunos= DBHelperAluno(this)
         dataBaseHelperChamadaAT= DBHelperAlunos_Turmas(this)
         dataBaseHelperChamdaFalta= DBHelperFalta(this)
@@ -72,8 +71,6 @@ class Caderneta : AppCompatActivity()
                 flag= true
             }
         }
-        //listaAlunos.add(Aluno("999", "dummy", "9875"))
-        //telaDados.setText("ID Aluno: " + listaAlunos.get(0).id + ", Nome Aluno: " + listaAlunos.get(0).nome + ", Mat Aluno: " + listaAlunos.get(0).matricula)
 
         if (flag)
         {
@@ -87,10 +84,6 @@ class Caderneta : AppCompatActivity()
             var adapter= Alunos_TurmasAdapter(this, listaDummy)
             listView.adapter = adapter
         }
-        //var listaAusentes= ArrayList<Aluno>()
-        //var posicao= 5
-        //listView.setOnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->  posicao= position; telaDados.setText("Clicou em: " + posicao.toString())}
-        //telaDados.setText("Clicou em: " + posicao.toString())
     }
 
     fun onClickSalvar (view: View)
