@@ -33,7 +33,6 @@ class Login : AppCompatActivity()
         var arrayProf= auxDBProf.readProfessor(mat)
         if (arrayProf.isEmpty()) //caso nao encontre o usuario
         {
-            //Toast.makeText(this, "Usuário não existe!", Toast.LENGTH_LONG)
             ETUsu.setText("")
             ETSenha.setText("")
         }

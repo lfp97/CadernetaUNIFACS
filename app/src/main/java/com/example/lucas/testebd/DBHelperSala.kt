@@ -17,8 +17,7 @@ class DBHelperSala(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
+
         db.execSQL(SQL_DELETE_ENTRIES)
         onCreate(db)
     }
@@ -30,10 +29,10 @@ class DBHelperSala(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
     @Throws(SQLiteConstraintException::class)
     fun insertSala(sala: Sala): Boolean
     {
-        // Gets the data repository in write mode
+      
         val db = writableDatabase
 
-        // Create a new map of values, where column names are the keys
+        
         val values = ContentValues()
         values.put(DBContract.salaEntry.COLUMN_ID, sala.id)
         values.put(DBContract.salaEntry.COLUMN_NUMERO, sala.numero)
@@ -46,13 +45,13 @@ class DBHelperSala(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
 
     @Throws(SQLiteConstraintException::class)
     fun deleteSala(idSala: String): Boolean {
-        // Gets the data repository in write mode
+    
         val db = writableDatabase
-        // Define 'where' part of query.
+    
         val selection = DBContract.salaEntry.COLUMN_ID + " LIKE ?"
-        // Specify arguments in placeholder order.
+      
         val selectionArgs = arrayOf(idSala)
-        // Issue SQL statement.
+       
         db.delete(DBContract.salaEntry.TABLE_NAME, selection, selectionArgs)
 
         return true
@@ -108,7 +107,7 @@ class DBHelperSala(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
     }
 
     companion object {
-        // If you change the database schema, you must increment the database version.
+
         val DATABASE_VERSION = 1
         val DATABASE_NAME = "Caderneta.db"
 

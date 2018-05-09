@@ -17,8 +17,7 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
+
         db.execSQL(SQL_DELETE_ENTRIES)
         onCreate(db)
     }
@@ -30,10 +29,9 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
     @Throws(SQLiteConstraintException::class)
     fun insertTurma(turma: Turma): Boolean
     {
-        // Gets the data repository in write mode
+
         val db = writableDatabase
 
-        // Create a new map of values, where column names are the keys
         val values = ContentValues()
         values.put(DBContract.turmaEntry.COLUMN_ID, turma.id)
         values.put(DBContract.turmaEntry.COLUMN_HORARIOINICIO, turma.horarioinicio)
@@ -42,8 +40,6 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         values.put(DBContract.turmaEntry.COLUMN_IDPROF, turma.professor)
         values.put(DBContract.turmaEntry.COLUMN_IDSALA, turma.sala)
 
-
-        // Insert the new row, returning the primary key value of the new row
         val newRowId = db.insert(DBContract.turmaEntry.TABLE_NAME, null, values)
 
         return true
@@ -51,13 +47,13 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
 
     @Throws(SQLiteConstraintException::class)
     fun deleteTurma(idTurma: String): Boolean {
-        // Gets the data repository in write mode
+
         val db = writableDatabase
-        // Define 'where' part of query.
+
         val selection = DBContract.turmaEntry.COLUMN_ID + " LIKE ?"
-        // Specify arguments in placeholder order.
+
         val selectionArgs = arrayOf(idTurma)
-        // Issue SQL statement.
+
         db.delete(DBContract.turmaEntry.TABLE_NAME, selection, selectionArgs)
 
         return true
@@ -70,7 +66,7 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         try {
             cursor = db.rawQuery("select * from " + DBContract.turmaEntry.TABLE_NAME + " WHERE " + DBContract.turmaEntry.COLUMN_ID + "='" + idTurma + "'", null)
         } catch (e: SQLiteException) {
-            // if table not yet present, create it
+
             db.execSQL(SQL_CREATE_ENTRIES)
             return ArrayList()
         }
@@ -106,7 +102,7 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
                     DBContract.turmaEntry.COLUMN_HORARIOINICIO + "='" + horario + "'", null)
                                         //select * from Turma where IDPROF= '1' and HORARIOINICIO= '19:00'
         } catch (e: SQLiteException) {
-            // if table not yet present, create it
+
             db.execSQL(SQL_CREATE_ENTRIES)
             var erro= Turma("erro", "erro2", "erro", "erro", "erro", "erro")
             return erro
@@ -173,7 +169,7 @@ class DBHelperTurma(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
     }
 
     companion object {
-        // If you change the database schema, you must increment the database version.
+
         val DATABASE_VERSION = 1
         val DATABASE_NAME = "Caderneta.db"
 

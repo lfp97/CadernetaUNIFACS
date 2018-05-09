@@ -19,8 +19,6 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
         db.execSQL(SQL_DELETE_ENTRIES)
         onCreate(db)
     }
@@ -32,17 +30,14 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
     @Throws(SQLiteConstraintException::class)
     fun insertProfessor(professor: Professor): Boolean
     {
-        // Gets the data repository in write mode
         val db = writableDatabase
 
-        // Create a new map of values, where column names are the keys
         val values = ContentValues()
         values.put(DBContract.professorEntry.COLUMN_ID, professor.id)
         values.put(DBContract.professorEntry.COLUMN_NAME, professor.nome)
         values.put(DBContract.professorEntry.COLUMN_MATRICULA, professor.matricula)
         values.put(DBContract.professorEntry.COLUMN_SENHA, professor.senha)
 
-        // Insert the new row, returning the primary key value of the new row
         val newRowId = db.insert(DBContract.professorEntry.TABLE_NAME, null, values)
 
         return true
@@ -56,20 +51,15 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         values.put(COLUMN_PROFESSOR_MATRICULA, professor.matricula)
         values.put(COLUMN_PROFESSOR_SENHA, professor.senha)
 
-        // executa inserção
         db.insert(TABLE_PROFESSOR, null, values)
         db.close()
     }
 
     @Throws(SQLiteConstraintException::class)
     fun deleteProfessor(idProfessor: String): Boolean {
-        // Gets the data repository in write mode
         val db = writableDatabase
-        // Define 'where' part of query.
         val selection = DBContract.professorEntry.COLUMN_ID + " LIKE ?"
-        // Specify arguments in placeholder order.
         val selectionArgs = arrayOf(idProfessor)
-        // Issue SQL statement.
         db.delete(DBContract.professorEntry.TABLE_NAME, selection, selectionArgs)
 
         return true
@@ -82,7 +72,6 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         try {
             cursor = db.rawQuery("select * from " + DBContract.professorEntry.TABLE_NAME + " WHERE " + DBContract.professorEntry.COLUMN_MATRICULA + "='" + matProfessor + "'", null)
         } catch (e: SQLiteException) {
-            // if table not yet present, create it
             db.execSQL(SQL_CREATE_ENTRIES)
             return ArrayList()
         }
@@ -141,13 +130,13 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         val selection = "$COLUMN_PROFESSOR_MATRICULA = ?"
         val selectionArgs = arrayOf(matricula)
 
-        val cursor = db.query(TABLE_PROFESSOR, // Tabela
+        val cursor = db.query(TABLE_PROFESSOR, 
                 columns,
-                selection,      //columns for the WHERE clause
-                selectionArgs,  //The values for the WHERE clause
-                null,  //group the rows
-                null,   //filter by row groups
-                null)  //The sort order
+                selection,   
+                selectionArgs, 
+                null,  
+                null,  
+                null) 
 
         val cursorCount = cursor.count
         cursor.close()
@@ -186,7 +175,7 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
     }
 
     companion object {
-        // If you change the database schema, you must increment the database version.
+
         val DATABASE_VERSION = 1
         val DATABASE_NAME = "Caderneta.db"
 
@@ -199,10 +188,8 @@ class DBHelperProfessor(context: Context) : SQLiteOpenHelper(context, DATABASE_N
 
         private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DBContract.professorEntry.TABLE_NAME
 
-        // Nome da tabela de professor
         private val TABLE_PROFESSOR = "professor"
 
-        // Campos tabela professor
         private val COLUMN_PROFESSOR_ID = "id"
         private val COLUMN_PROFESSOR_NOME = "nome"
         private val COLUMN_PROFESSOR_MATRICULA = "matricula"

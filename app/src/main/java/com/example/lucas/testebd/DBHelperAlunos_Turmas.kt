@@ -16,8 +16,6 @@ class DBHelperAlunos_Turmas(context: Context): SQLiteOpenHelper(context, DATABAS
 
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
         db.execSQL(SQL_DELETE_ENTRIES)
         onCreate(db)
     }
@@ -51,16 +49,14 @@ class DBHelperAlunos_Turmas(context: Context): SQLiteOpenHelper(context, DATABAS
 
     fun insertAlunoEmTurma (idAluno: String, idTurma: String): Boolean
     {
-        // Gets the data repository in write mode
+
         val db = writableDatabase
 
-        // Create a new map of values, where column names are the keys
+
         val values = ContentValues()
         values.put(DBContract.alunos_turmasEntry.COLUMN_IDALUNO, idAluno)
         values.put(DBContract.alunos_turmasEntry.COLUMN_IDTURMA, idTurma)
 
-
-        // Insert the new row, returning the primary key value of the new row
         val newRowId = db.insert(DBContract.alunos_turmasEntry.TABLE_NAME, null, values)
 
         return true
@@ -71,7 +67,6 @@ class DBHelperAlunos_Turmas(context: Context): SQLiteOpenHelper(context, DATABAS
     }
 
     companion object {
-        // If you change the database schema, you must increment the database version.
         val DATABASE_VERSION = 1
         val DATABASE_NAME = "Caderneta.db"
 

@@ -14,8 +14,6 @@ class DBHelperFalta(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, 
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
         db.execSQL(SQL_DELETE_ENTRIES)
         onCreate(db)
     }
@@ -51,24 +49,20 @@ class DBHelperFalta(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, 
 
     fun insertFalta (idFalta: String, idAluno: String, idTurma: String): Boolean
     {
-        // Gets the data repository in write mode
         val db = writableDatabase
 
-        // Create a new map of values, where column names are the keys
         val values = ContentValues()
         values.put(DBContract.faltaEntry.COLUMN_ID, idFalta)
         values.put(DBContract.faltaEntry.COLUMN_IDALUNO, idAluno)
         values.put(DBContract.faltaEntry.COLUMN_IDTURMA, idTurma)
 
-
-        // Insert the new row, returning the primary key value of the new row
         val newRowId = db.insert(DBContract.faltaEntry.TABLE_NAME, null, values)
 
         return true
     }
 
     companion object {
-        // If you change the database schema, you must increment the database version.
+
         val DATABASE_VERSION = 1
         val DATABASE_NAME = "Caderneta.db"
 

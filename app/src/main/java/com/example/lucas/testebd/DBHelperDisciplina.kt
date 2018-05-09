@@ -17,8 +17,6 @@ class DBHelperDisciplina(context: Context) : SQLiteOpenHelper(context, DATABASE_
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
         db.execSQL(SQL_DELETE_ENTRIES)
         onCreate(db)
     }
@@ -30,15 +28,13 @@ class DBHelperDisciplina(context: Context) : SQLiteOpenHelper(context, DATABASE_
     @Throws(SQLiteConstraintException::class)
     fun insertDisciplina(disc: Disciplina): Boolean
     {
-        // Gets the data repository in write mode
+
         val db = writableDatabase
 
-        // Create a new map of values, where column names are the keys
         val values = ContentValues()
         values.put(DBContract.disciplinaEntry.COLUMN_ID, disc.id)
         values.put(DBContract.disciplinaEntry.COLUMN_NAME, disc.nome)
 
-        // Insert the new row, returning the primary key value of the new row
         val newRowId = db.insert(DBContract.disciplinaEntry.TABLE_NAME, null, values)
 
         return true
@@ -46,13 +42,10 @@ class DBHelperDisciplina(context: Context) : SQLiteOpenHelper(context, DATABASE_
 
     @Throws(SQLiteConstraintException::class)
     fun deletePDisciplina(idDisc: String): Boolean {
-        // Gets the data repository in write mode
+
         val db = writableDatabase
-        // Define 'where' part of query.
         val selection = DBContract.disciplinaEntry.COLUMN_ID + " LIKE ?"
-        // Specify arguments in placeholder order.
         val selectionArgs = arrayOf(idDisc)
-        // Issue SQL statement.
         db.delete(DBContract.disciplinaEntry.TABLE_NAME, selection, selectionArgs)
 
         return true
@@ -65,7 +58,6 @@ class DBHelperDisciplina(context: Context) : SQLiteOpenHelper(context, DATABASE_
         try {
             cursor = db.rawQuery("select * from " + DBContract.disciplinaEntry.TABLE_NAME + " WHERE " + DBContract.disciplinaEntry.COLUMN_ID + "='" + idDisc + "'", null)
         } catch (e: SQLiteException) {
-            // if table not yet present, create it
             db.execSQL(SQL_CREATE_ENTRIES)
             return ArrayList()
         }
@@ -108,7 +100,6 @@ class DBHelperDisciplina(context: Context) : SQLiteOpenHelper(context, DATABASE_
     }
 
     companion object {
-        // If you change the database schema, you must increment the database version.
         val DATABASE_VERSION = 1
         val DATABASE_NAME = "Caderneta.db"
 
